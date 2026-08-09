@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  background-color: #f4f4f4;
+  color: #222;
+  padding: 40px 20px;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px 50px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  border-bottom: 3px solid #1B2B4B;
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+  color: #1B2B4B;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: #1B2B4B;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1rem;
+  color: #1B2B4B;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 20px 0;
+}
+
+a {
+  color: #B8912A;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1B2B4B;
+}
+
+ul {
+  padding-left: 20px;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: #444;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 10px;
+}
+
+th {
+  background-color: #1B2B4B;
+  color: #ffffff;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+td {
+  padding: 8px 10px;
+  vertical-align: top;
+  color: #444;
+  line-height: 1.6;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f7f2;
+}
+
+/* Hobby table used in hobby.html */
+table.hobby-table td.hobby-title {
+  font-weight: bold;
+  color: #1B2B4B;
+  font-size: 0.95rem;
+  background-color: #f0ede6;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #aaa;
+  margin-top: 40px;
+  letter-spacing: 0.08em;
+}

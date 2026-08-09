@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Change</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background: linear-gradient(135deg, #e9e9e9, #f5f5f5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            width: 400px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        input[type="number"] {
+            padding: 5px;
+            font-size: 15px;
+            width: 120px;
+        }
+        button {
+            padding: 6px 14px;
+            font-size: 14px;
+            margin-left: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        #result ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 8px 0 0 0;
+        }
+        #result li {
+            padding: 2px 0;
+        }
+        #backBtn {
+            display: none;
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Calculate Change</h2>
+
+    <div id="inputSection">
+        <label for="amount">Enter Amount:</label>
+        <input type="number" id="amount" min="0" step="1">
+        <button onclick="calculateChange()">Submit</button>
+    </div>
+
+    <div id="result"></div>
+    <button id="backBtn" onclick="goBack()">Back</button>
+</div>
+
+<script>
+    function calculateChange() {
+        const input = document.getElementById("amount").value.trim();
+        const resultEl = document.getElementById("result");
+        let amount = Number(input);
+
+        // Validation
+        if (input === "" || isNaN(amount) || amount < 0) {
+            resultEl.textContent = "Error, please enter a valid positive number.";
+            return;
+        }
+
+        amount = Math.floor(amount); // whole dollars only
+
+        // Denominations from largest to smallest
+        const denominations = [
+            { value: 1000, name: "$1000 note" },
+            { value: 500,  name: "$500 note" },
+            { value: 100,  name: "$100 note" },
+            { value: 50,   name: "$50 note" },
+            { value: 20,   name: "$20 note" },
+            { value: 10,   name: "$10 coin" },
+            { value: 5,    name: "$5 coin" },
+            { value: 2,    name: "$2 coin" },
+            { value: 1,    name: "$1 coin" }
+        ];
+
+        let remaining = amount;
+        let breakdown = [];
+
+        for (const d of denominations) {
+            const count = Math.floor(remaining / d.value);
+            if (count > 0) {
+                breakdown.push(count + " x " + d.name);
+                remaining -= count * d.value;
+            }
+        }
+
+        if (breakdown.length === 0) {
+            resultEl.textContent = "You entered $0, no change needed.";
+        } else {
+            let html = "<p>For $" + amount + " you get:</p><ul>";
+            breakdown.forEach(item => {
+                html += "<li>" + item + "</li>";
+            });
+            html += "</ul>";
+            resultEl.innerHTML = html;
+        }
+
+        // Hide input, show back button
+        document.getElementById("inputSection").style.display = "none";
+        document.getElementById("backBtn").style.display = "inline-block";
+    }
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>
